@@ -77,6 +77,7 @@
 
     function onScroll() {
         const posTop = elem.getBoundingClientRect().top;
+
         // documentation
         //1
         // section on the top screnn
@@ -87,10 +88,20 @@
         //3
         // full section is displayed
         // elem.classList.toggle('visible', posTop + elem.clientHeight <= window.innerHeight && posTop >= 0);
+        //desktop
         if (posTop + elem.clientHeight <= window.innerHeight && posTop >= 0) {
+
+            animatedNumbers();
+            document.removeEventListener('scroll', onScroll);
+        }
+        //mobile
+        if (elem.clientHeight >= 290 && window.innerHeight >= 290 && posTop <= 230) {
             animatedNumbers();
             document.removeEventListener('scroll', onScroll);
         }
     };
+
+
+
 
 })();
